@@ -1,0 +1,55 @@
+<div *ngIf="loading" class="text-center my-3">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  
+  <div *ngIf="!loading && movies.length" class="container my-3">
+    <div class="row row-cols-1 row-cols-md-5 g-4">
+      <div class="col" *ngFor="let movie of movies">
+        <div class="card h-100" (click)="movieDescription(movie.id)">
+          <img [src]="movie.poster_path ? ('https://image.tmdb.org/t/p/w500' + movie.poster_path) : 'https://via.placeholder.com/500x300?text=No+Image+Available'" alt="Movie poster">
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <p class="card-text">{{ movie.overview | slice:0:100 }}...</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Release Date: {{ movie.release_date | date }}</small>
+            <button class="btn btn-sm btn-primary mt-2" (click)="movieDescription(movie.id)">More Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <nav aria-label="Page navigation" class="my-4">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" href="#" aria-label="Previous" (click)="previousPage(); $event.preventDefault()">
+            <span aria-hidden="true">
+              <i class="fas fa-chevron-left"></i>
+            </span>
+            <span class="visually-hidden">Previous</span>
+          </a>
+        </li>
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+            Page {{ currentPage }} of {{ totalPages }}
+          </a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link" href="#" aria-label="Next" (click)="nextPage(); $event.preventDefault()">
+            <span aria-hidden="true">
+              <i class="fas fa-chevron-right"></i>
+            </span>
+            <span class="visually-hidden">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+  </div>
+  
+  <div *ngIf="!loading && !movies.length" class="text-center my-3">
+    No movies found.
+  </div>
+  

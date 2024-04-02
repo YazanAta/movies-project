@@ -1,1 +1,74 @@
-<p>nav works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Movies</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <!-- Genre Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownGenres" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Genres
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownGenres">
+              <li *ngFor="let genre of genres">
+                <a class="dropdown-item" [routerLink]="['/genre', genre.id]">{{ genre.name }}</a>
+              </li>
+            </ul>
+          </li>
+          <!-- Movie Lists Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMovieLists" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Movie Lists
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMovieLists">
+              <li>
+                <a class="dropdown-item" [routerLink]="['/movies', 'now_playing']">Now Playing</a>
+              </li>
+              <li>
+                <a class="dropdown-item" [routerLink]="['/movies', 'popular']">Popular</a>
+              </li>
+              <li>
+                <a class="dropdown-item" [routerLink]="['/movies', 'top_rated']">Top Rated</a>
+              </li>
+              <li>
+                <a class="dropdown-item" [routerLink]="['/movies', 'upcoming']">Upcoming</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Inside your <nav> element, add a search form -->
+    <form class="d-flex" (ngSubmit)="searchMovies()" #searchForm="ngForm">
+        <input class="form-control me-2" type="search" placeholder="Search Movies" aria-label="Search" [(ngModel)]="searchText" name="searchQuery" #searchQuery="ngModel" required>
+        <button class="btn btn-success" type="submit">Search</button>
+    </form>
+</nav>
+  
+
+<!--
+<div class="container mt-3">
+    <div class="row">
+      <div class="col-md-4">
+        <select class="form-select" (change)="onCategoryChange($event)">
+          <option value="popular">Popular</option>
+          <option value="now_playing">Now Playing</option>
+          <option value="top_rated">Top Rated</option>
+          <option value="upcoming">Upcoming</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <select class="form-select" (change)="onGenreChange($event)">
+          <option value="">Select Genre</option>
+          <option *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</option>
+        </select>
+      </div>
+    </div>
+</div> -->
+<!--
+    <div class="col-md-8">
+      <input type="text" class="form-control" placeholder="Search movies..." [(ngModel)]="searchQuery" (keyup)="searchMovies()">
+    </div>
+-->

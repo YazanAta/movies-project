@@ -1,0 +1,44 @@
+.movie-details {
+  background-color: #343a40; // Dark background for contrast
+  color: #fff; // Light text for readability
+  overflow: hidden; // Ensures contained content aligns with border radius
+  min-height: 100vh;
+  
+  img {
+    border-radius: 4px; // Soften the edges of images
+  }
+
+  .related-movies .card {
+    background-color: #495057; // Slightly lighter cards for related movies
+  }
+
+  iframe {
+    border-radius: 4px; // Consistent rounding for iframes
+  }
+
+  .cast-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust spacing between cast members */
+  }
+  
+  .cast-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 185px; /* Match the width of the cast images */
+  }
+  
+  .cast-img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px; /* Optional: adds rounded corners to the images */
+    margin-bottom: 8px;
+  }
+  
+  .cast-name, .cast-character {
+    text-align: center;
+    margin: 4px 0;
+  }
+  
+}

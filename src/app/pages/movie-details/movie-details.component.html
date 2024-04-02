@@ -1,0 +1,43 @@
+<div *ngIf="movie" class="movie-details bg-dark text-light p-4">
+  <div class="row">
+      <div class="col-md-4">
+          <img [src]="movie.poster_path ? ('https://image.tmdb.org/t/p/w500' + movie.poster_path) : 'https://via.placeholder.com/500x300?text=No+Image+Available'" class="img-fluid rounded" [alt]="movie.title">
+          <div *ngIf="trailerUrl" class="mt-3">
+            <h3>Trailer</h3>
+            <iframe [src]="trailerUrl | safeUrl" frameborder="0" allowfullscreen class="w-100" style="height: 215px;"></iframe>
+          </div>
+      </div>
+      <div class="col-md-8">
+          <h2>{{ movie.title }}</h2>
+          <p><strong>Overview:</strong> {{ movie.overview }}</p>
+          <p><strong>Rating:</strong> {{ movie.vote_average }} / 10</p>
+          <p><strong>Release Date:</strong> {{ movie.release_date | date }}</p>
+          <div *ngIf="cast.length > 0">
+            <h3>Cast</h3>
+            <div class="cast-list">
+              <div *ngFor="let actor of cast" class="cast-member">
+                <img [src]="actor.profile_path ? ('https://image.tmdb.org/t/p/w185' + actor.profile_path) : 'https://via.placeholder.com/185x278?text=No+Image'" alt="{{ actor.name }}" class="cast-img">
+                <div class="cast-info">
+                  <p class="cast-name">{{ actor.name }}</p>
+                  <p class="cast-character">{{ actor.character }}</p>
+                </div>
+              </div>
+            </div>
+          </div>  
+      </div>
+  </div>
+
+  <div *ngIf="relatedMovies.length" class="mt-4 related-movies">
+    <h3>Related Movies</h3>
+    <div class="row">
+      <div *ngFor="let relatedMovie of relatedMovies" class="col-3 card m-2" style="width: 18rem;">
+        <img [src]="relatedMovie.poster_path ? ('https://image.tmdb.org/t/p/w300' + relatedMovie.poster_path) : 'https://via.placeholder.com/500x300?text=No+Image+Available'" class="card-img-top" [alt]="relatedMovie.title">
+        <div class="card-body">
+          <p class="card-text">{{ relatedMovie.title }}</p>
+          <button class="btn btn-primary btn-sm" (click)="navigateToMovieDetails(relatedMovie.id)">More Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

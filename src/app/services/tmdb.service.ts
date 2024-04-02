@@ -17,12 +17,13 @@ export class TmdbService {
     return this.http.get(`${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}`);
   }
   
-  getMoviesByGenre(genreId: string): Observable<any> {
+  getMoviesByGenre(genreId: string, page: number = 1): Observable<any> {
     return this.http.get(`${this.baseUrl}/discover/movie?api_key=${this.apiKey}&with_genres=${genreId}`);
   }  
 
-  searchMovies(query: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/search/movie?api_key=${this.apiKey}&query=${encodeURIComponent(query)}`);
+  searchMovies(query: string, page: number = 1): Observable<any> {
+    const url = `${this.baseUrl}/search/movie?api_key=${this.apiKey}&query=${encodeURIComponent(query)}&page=${page}`;
+    return this.http.get(url);
   }
 
   getMoviesByCategory(category: string): Observable<any> {
@@ -44,6 +45,19 @@ export class TmdbService {
   getMovieVideos(movieId: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/movie/${movieId}/videos?api_key=${this.apiKey}`);
   }
+
+  getMovies(filter: string = 'popular', page: number = 1, genreId?: number): Observable<any> {
+    let url = `${this.baseUrl}/movie/${filter}?api_key=${this.apiKey}&page=${page}`;
+    if (genreId) {
+      url = `${this.baseUrl}/discover/movie?api_key=${this.apiKey}&with_genres=${genreId}&page=${page}`;
+    }
+    return this.http.get(url);
+  }
+
+  getFeaturedMovies(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}`);
+  }  
+  
   
   
 }

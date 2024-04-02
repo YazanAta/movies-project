@@ -1,0 +1,18 @@
+.card-img-top {
+    height: 400px; // Fix image height for a uniform look
+    object-fit: cover; // Ensure images cover the card top area nicely
+}
+
+.card-body {
+    overflow: hidden; // Keep the card body tidy
+    text-overflow: ellipsis;
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+
+.card{
+    cursor: pointer;
+    transition: transform 0.2s;
+}

@@ -1,0 +1,20 @@
+<div class="hero-section">
+    <h1>MovieExplorer</h1>
+    <p class="tagline">Your Ultimate Movie Guide</p>
+    <input type="text" placeholder="Search movies..." class="search-bar" [(ngModel)]="searchText" name="searchQuery" #searchQuery="ngModel" (keyup.enter)="searchMovies()">
+</div>
+  
+<div class="featured-movies mt-3">
+    <h2>Featured Movies</h2>
+    <div class="movie-cards d-flex flex-wrap justify-content-center">
+        <div *ngFor="let movie of movies" class="card m-2" style="width: 18rem;">
+        <img class="card-img-top" [src]="movie.poster_path ? ('https://image.tmdb.org/t/p/w500' + movie.poster_path) : 'https://via.placeholder.com/500x750'" [alt]="movie.title">
+        <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <p class="card-text">{{ movie.overview | slice:0:100 }}...</p>
+            <a (click)="movieDescription(movie.id)" class="btn btn-primary">More Details</a>
+          </div>
+        </div>
+    </div>
+</div>
+  

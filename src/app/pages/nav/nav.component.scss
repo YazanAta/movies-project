@@ -1,0 +1,70 @@
+/* Adjustments to the dropdowns for better visual appeal */
+.navbar-nav .dropdown-menu {
+    background-color: #0062cc; // Example: change dropdown background color
+    .dropdown-item {
+      color: #fff;
+      &:hover {
+        background-color: #004a9f; // Darken background on hover for contrast
+      }
+    }
+}
+/* Navbar overall styles */
+.navbar {
+  font-family: 'Segoe UI', sans-serif; /* Change font family as needed */
+  background-color: #007bff; /* Primary color */
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #fff !important;
+}
+
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+  background-color: #f8f9fa; /* Light background for dropdown */
+  border: 0; /* Remove default border */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add slight shadow for depth */
+}
+
+.dropdown-item:hover {
+  background-color: #007bff; /* Highlight color for dropdown items on hover */
+  color: #ffffff;
+}
+
+/* Search form enhancements */
+.navbar .form-control {
+  border: 2px solid #007bff; /* Border color matching the navbar */
+}
+
+.navbar .btn-outline-success {
+  border-color: #28a745;
+  color: #28a745;
+}
+
+.navbar .btn-outline-success:hover {
+  background-color: #28a745;
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: #007bff; /* Ensure visibility on collapse */
+  }
+  
+  .navbar-nav .nav-link {
+    color: #fff;
+    padding: 10px 15px; /* Increase tap area for better mobile experience */
+  }
+}
+
+  
