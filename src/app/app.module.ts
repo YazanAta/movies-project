@@ -12,6 +12,9 @@ import { MovieDetailsComponent } from './pages/movie-details/movie-details.compo
 import { MovieListComponent } from './shared/movie-list/movie-list.component';
 import { NavComponent } from './pages/nav/nav.component';
 import { HomeComponent } from './pages/home/home.component';
+import { TmdbService } from './services/tmdb.service';
+import { MovieService } from './services/movie.service';
+import { MyMoviesComponent } from './pages/my-movies/my-movies.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { HomeComponent } from './pages/home/home.component';
     MovieDetailsComponent,
     MovieListComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    MyMoviesComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,10 @@ import { HomeComponent } from './pages/home/home.component';
     NgApexchartsModule,
     FormsModule,
     NgbModule
+  ],
+  providers: [
+    TmdbService,
+    MovieService
   ],
   bootstrap: [AppComponent]
 })

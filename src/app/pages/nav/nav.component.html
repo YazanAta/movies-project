@@ -36,7 +36,10 @@
                 <a class="dropdown-item" [routerLink]="['/movies', 'upcoming']">Upcoming</a>
               </li>
             </ul>
-          </li>
+          </li>   
+          <a class="nav-link" routerLink="/mymovies">
+            My Movies
+          </a>
         </ul>
       </div>
     </div>
@@ -46,29 +49,3 @@
         <button class="btn btn-success" type="submit">Search</button>
     </form>
 </nav>
-  
-
-<!--
-<div class="container mt-3">
-    <div class="row">
-      <div class="col-md-4">
-        <select class="form-select" (change)="onCategoryChange($event)">
-          <option value="popular">Popular</option>
-          <option value="now_playing">Now Playing</option>
-          <option value="top_rated">Top Rated</option>
-          <option value="upcoming">Upcoming</option>
-        </select>
-      </div>
-      <div class="col-md-3">
-        <select class="form-select" (change)="onGenreChange($event)">
-          <option value="">Select Genre</option>
-          <option *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</option>
-        </select>
-      </div>
-    </div>
-</div> -->
-<!--
-    <div class="col-md-8">
-      <input type="text" class="form-control" placeholder="Search movies..." [(ngModel)]="searchQuery" (keyup)="searchMovies()">
-    </div>
--->

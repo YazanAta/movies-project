@@ -2,6 +2,7 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/cor
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, combineLatest, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
+import { MovieService } from 'src/app/services/movie.service';
 import { TmdbService } from 'src/app/services/tmdb.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class MovieListComponent implements OnInit, OnChanges {
   totalPages: number = 0;
   loading: boolean = false;
 
-  constructor(private tmdbService: TmdbService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private tmdbService: TmdbService, private route: ActivatedRoute, private router: Router, private movieService: MovieService) { }
 
 
   ngOnInit() {
@@ -113,5 +114,21 @@ export class MovieListComponent implements OnInit, OnChanges {
     this.router.navigate(['/movie', movieId]);
   }
   
+// Component
+addMovieToDatabase(movie: any) {
+  // Adjust 'movie' structure as needed to match the Movie entity
+  const movieData = {
+    id: movie.id,
+    title: movie.title, // Make sure this matches your JSON structure
+    overview: movie.overview
+  };
+
+  this.movieService.addMovie(movieData).subscribe({
+    next: (response) => console.log('Movie added:', response),
+    error: (error) => console.error('Error adding movie:', error)
+  });
+}
+
   
+
 }

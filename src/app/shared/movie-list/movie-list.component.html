@@ -7,7 +7,7 @@
   <div *ngIf="!loading && movies.length" class="container my-3">
     <div class="row row-cols-1 row-cols-md-5 g-4">
       <div class="col" *ngFor="let movie of movies">
-        <div class="card h-100" (click)="movieDescription(movie.id)">
+        <div class="card h-100">
           <img [src]="movie.poster_path ? ('https://image.tmdb.org/t/p/w500' + movie.poster_path) : 'https://via.placeholder.com/500x300?text=No+Image+Available'" alt="Movie poster">
           <div class="card-body">
             <h5 class="card-title">{{ movie.title }}</h5>
@@ -16,6 +16,8 @@
           <div class="card-footer">
             <small class="text-muted">Release Date: {{ movie.release_date | date }}</small>
             <button class="btn btn-sm btn-primary mt-2" (click)="movieDescription(movie.id)">More Details</button>
+            <!-- Add this button inside your movie card component template -->
+            <button (click)="addMovieToDatabase(movie)" class="btn btn-sm btn-success mt-2">Add to My Movies</button>
           </div>
         </div>
       </div>

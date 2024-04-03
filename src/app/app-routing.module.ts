@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MovieDetailsComponent } from './pages/movie-details/movie-details.component';
 import { MovieListComponent } from './shared/movie-list/movie-list.component';
 import { HomeComponent } from './pages/home/home.component';
+import { MyMoviesComponent } from './pages/my-movies/my-movies.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -10,6 +11,8 @@ const routes: Routes = [
   { path: 'movies/:filter', component: MovieListComponent },
   { path: 'genre/:genreId', component: MovieListComponent },
   { path: 'movies/search', component: MovieListComponent },
+  { path: 'mymovies', component: MyMoviesComponent },
+
 ];
 
 @NgModule({

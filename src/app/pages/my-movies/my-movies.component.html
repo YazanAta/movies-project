@@ -1,0 +1,10 @@
+<div class="movie-container">
+    <div *ngFor="let movie of movies" class="movie-card">
+      <div class="movie-info">
+        <h2>{{ movie.title }}</h2>
+        <p>{{ movie.overview }}</p>
+        <button class="btn-details" (click)="movieDescription(movie.id)">Details</button>
+      </div>
+    </div>
+</div>
+  
