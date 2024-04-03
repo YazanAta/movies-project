@@ -16,9 +16,6 @@ public class MovieController {
 
   @PostMapping
   public Movie addMovie(@RequestBody Movie movie) {
-    // Log the movie data received
-    System.out.println("Received movie: " + movie.getTitle() + " - " + movie.getOverview());
-
     return movieRepository.save(movie);
   }
 
